@@ -18,26 +18,27 @@ const IconInput = ({
     styles = {
       "--padding": "4px",
       "--border-thickness": "1px",
-      "--text-left-padding": "20px",
+      "--text-left-padding": "24px",
     };
   } else if (size === "large") {
     styles = {
       "--padding": "6px",
       "--border-thickness": "2px",
-      "--text-left-padding": "24px",
+      "--text-left-padding": "36px",
     };
   }
 
   return <Wrapper style={{width, ...styles}}>
     <VisuallyHidden>
-      <label htmlFor={label}>{label}</label>
+      {label}
     </VisuallyHidden>
     <Icon id={icon} size={size === "small" ? 14 : 18}/>
-    <Input id={label} placeholder={placeholder}/>
+    <Input placeholder={placeholder}/>
   </Wrapper>;
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.label`
+  display: block;
   isolation: isolate;
   padding: var(--padding) 0;
   border-bottom: var(--border-thickness, 1) solid ${COLORS.black};
@@ -54,7 +55,7 @@ const Input = styled.input`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: ${24 / 16}rem;
   background-color: transparent;
 
   color: inherit;
@@ -64,8 +65,12 @@ const Input = styled.input`
   padding-left: var(--text-left-padding);
 
   &:focus {
+    outline-offset: 2px;
+    /*
+    NOT REQUIRED
     outline: 2px dotted black;
-    outline: 5px auto -webkit-focus-ring-color;
+    outline: 5px auto -webkit-focus-ring-color; 
+    */
   }
 
   &::placeholder {
