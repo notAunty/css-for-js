@@ -13,7 +13,64 @@ const IconInput = ({
   size,
   placeholder,
 }) => {
-  return 'TODO';
+  let styles;
+  if (size === "small") {
+    styles = {
+      "--padding": "4px",
+      "--border-thickness": "1px",
+      "--text-left-padding": "20px",
+    };
+  } else if (size === "large") {
+    styles = {
+      "--padding": "6px",
+      "--border-thickness": "2px",
+      "--text-left-padding": "24px",
+    };
+  }
+
+  return <Wrapper style={{width, ...styles}}>
+    <VisuallyHidden>
+      <label htmlFor={label}>{label}</label>
+    </VisuallyHidden>
+    <Icon id={icon} size={size === "small" ? 14 : 18}/>
+    <Input id={label} placeholder={placeholder}/>
+  </Wrapper>;
 };
+
+const Wrapper = styled.div`
+  isolation: isolate;
+  padding: var(--padding) 0;
+  border-bottom: var(--border-thickness, 1) solid ${COLORS.black};
+  position: relative;
+
+  color: ${COLORS.gray700};
+  &:hover {
+    color: ${COLORS.black};
+  }
+`;
+
+const Input = styled.input`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+
+  color: inherit;
+  font-weight: 700;
+
+  border: none;
+  padding-left: var(--text-left-padding);
+
+  &:focus {
+    outline: 2px dotted black;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+  }
+`;
 
 export default IconInput;
