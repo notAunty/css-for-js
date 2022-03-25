@@ -13,21 +13,27 @@ const Select = ({ label, value, onChange, children }) => {
       <InnerSelect id="inner" value={value} onChange={onChange}>
         {children}
       </InnerSelect>
-      <SelectedItemText>{displayedValue}</SelectedItemText>
-      <SelectIcon>
-        <Icon size={22.5} id="chevron-down" />
-      </SelectIcon>
+      <Presentation>
+        <SelectedItemText>{displayedValue}</SelectedItemText>
+        <SelectIcon>
+          <Icon size={22.5} id="chevron-down" />
+        </SelectIcon>
+      </Presentation>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: fit-content;
-  padding: 16px;
-  border-radius: 8px;
-  background-color: ${COLORS.transparentGray15};
   position: relative;
+  isolation: isolate;
+  width: fit-content;
+
+  color: ${COLORS.gray700};
+  &:hover {
+    color: ${COLORS.black};
+  }
 `;
+
 
 const InnerSelect = styled.select`
   opacity: 0;
@@ -40,7 +46,21 @@ const InnerSelect = styled.select`
   width: 100%;
 `;
 
-const SelectedItemText = styled.span``;
+const Presentation = styled.div`
+  width: fit-content;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: ${COLORS.transparentGray15};
+
+  ${InnerSelect}:focus + & {
+    outline: 2px dotted black;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+`;
+
+const SelectedItemText = styled.span`
+  color: inherit;
+`;
 
 const SelectIcon = styled.span`
   width: fit-content;
