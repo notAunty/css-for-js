@@ -13,6 +13,7 @@ const SuperHeader = () => {
       <MarketingMessage>
         Free shipping on domestic orders over $75!
       </MarketingMessage>
+      <Spacer />
       <SearchInput />
       <HelpLink href="/help">Help</HelpLink>
       <UnstyledButton>
@@ -26,6 +27,13 @@ const Wrapper = styled.div`
   font-size: 0.875rem;
   color: ${COLORS.gray[300]};
   background-color: ${COLORS.gray[900]};
+  display: flex;
+  padding: 12px 32px;
+  gap: 8px;
+`;
+
+const Spacer = styled.div`
+  margin-left: auto;
 `;
 
 const MarketingMessage = styled.span`
