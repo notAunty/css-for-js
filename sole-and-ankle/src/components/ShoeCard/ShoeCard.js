@@ -29,7 +29,13 @@ const ShoeCard = ({
     ? 'on-sale'
     : isNewShoe(releaseDate)
       ? 'new-release'
-      : 'default'
+      : 'default';
+  const variantText = typeof salePrice === 'number'
+    ? 'Sale'
+    : 'Just Released!';
+  const variantBgColor = typeof salePrice === 'number'
+    ? COLORS.primary
+    : COLORS.secondary;
 
   return (
     <Link href={`/shoe/${slug}`}>
@@ -45,6 +51,11 @@ const ShoeCard = ({
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
         </Row>
+        {!(variant === "default") && (
+          <Variant style={{"--bgColor": variantBgColor}}>
+            {variantText}
+          </Variant>
+        )}
       </Wrapper>
     </Link>
   );
@@ -54,6 +65,7 @@ const Link = styled.a`
   text-decoration: none;
   color: inherit;
   flex: 1 1 340px;
+  position: relative;
 `;
 
 const Wrapper = styled.article`
@@ -85,6 +97,17 @@ const ColorInfo = styled.p`
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
+`;
+
+const Variant = styled.div`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  border-radius: 2px;
+  padding: 7px 9px 9px 11px;
+  font-weight: 700;
+  color: ${COLORS.white};
+  background-color: var(--bgColor);
 `;
 
 export default ShoeCard;
