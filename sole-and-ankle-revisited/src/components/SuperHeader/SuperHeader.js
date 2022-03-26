@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS } from '../../constants';
+import { COLORS, MEDIA_QUERIES } from '../../constants';
 
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
@@ -32,6 +32,16 @@ const Wrapper = styled.div`
   height: 40px;
   padding-left: 32px;
   padding-right: 32px;
+
+  @media screen and (${MEDIA_QUERIES.maxTablet}) {
+    & {
+      height: 8px;
+    }
+
+    > * {
+      display: none;
+    }
+  }
 `;
 
 const MarketingMessage = styled.span`
