@@ -34,13 +34,7 @@ const Wrapper = styled.div`
   padding-right: 32px;
 
   @media screen and (${MEDIA_QUERIES.maxTablet}) {
-    & {
-      height: 8px;
-    }
-
-    > * {
-      display: none;
-    }
+    display: none;
   }
 `;
 
