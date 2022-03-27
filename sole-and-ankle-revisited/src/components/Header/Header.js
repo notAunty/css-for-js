@@ -29,15 +29,18 @@ const Header = () => {
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
         </DesktopNav>
         <Side>
-          <MobileNav>
+          <MobileActions>
             <Icon id="shopping-bag" color="black" />
             <Icon id="search" color="black" />
             <MenuButton onClick={() => setShowMobileMenu(true)}>
               <Icon id="menu" color="black" />
             </MenuButton>
-          </MobileNav>
+          </MobileActions>
         </Side>
       </MainHeader>
 
@@ -53,8 +56,8 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow-x: auto;
 
   @media screen and (${MEDIA_QUERIES.maxTablet}) {
     border-top: 4px solid black;
@@ -63,7 +66,7 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: max(32px, 4vw);
+  gap: clamp(1.2rem, 6vw - 2.25rem, 3rem);
   margin: 0px 48px;
   margin-left: 48px;
 
@@ -72,7 +75,7 @@ const DesktopNav = styled.nav`
   }
 `;
 
-const MobileNav = styled.div`
+const MobileActions = styled.div`
   display: none;
   align-items: baseline;
 
@@ -98,6 +101,7 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  white-space: nowrap;
 
   &:first-of-type {
     color: ${COLORS.secondary};
