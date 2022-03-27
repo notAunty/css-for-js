@@ -16,7 +16,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 
   return (
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
-      <Wrapper>
+      <Content aria-label="Mobile menu">
         <CloseButton onClick={onDismiss}>
           <Icon id="close">
             <VisuallyHidden>Dismiss menu</VisuallyHidden>
@@ -35,7 +35,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
           <a href="/privacy">Privacy Policy</a>
           <a href="/contact">Contact Us</a>
         </MobileFooter>
-      </Wrapper>
+      </Content>
     </Overlay>
   );
 };
@@ -51,7 +51,7 @@ const Overlay = styled(DialogOverlay)`
   justify-content: flex-end;
 `;
 
-const Wrapper = styled(DialogContent)`
+const Content = styled(DialogContent)`
   position: relative;
   width: 85%;
   background-color: ${COLORS.white};
